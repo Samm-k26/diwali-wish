@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🪔 Happy Diwali | A Special Festive Surprise for My Favorite Madam 💖</title>
+
+  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🪔 Happy Diwali - A Sweet Festive Surprise Just for My Favorite Madam! ✨💖">
+  <meta property="og:description" content="My Favorite Madam, tap here to open a warm, special and sparkling Diwali surprise made especially for you! ✨🪔">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1605705658941-893c528654c6?auto=format&fit=crop&w=600&q=80">
+  <meta name="theme-color" content="#d97706">
+
+  <!-- Google Fonts for elegant typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas for dynamic fireworks and sparkles -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Audio Controls Floating Bar -->
+  <div class="audio-control-bar">
+    <button id="musicToggleBtn" class="audio-btn muted" aria-label="Toggle festive music">
+      <span class="audio-icon" id="audioIcon">🔇</span>
+      <span class="audio-text" id="audioText">Music OFF</span>
+      <div class="sound-wave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Background Festive Song Audio Player -->
+  <audio id="festiveAudio" loop preload="auto">
+    <source src="diwali_music.aac" type="audio/aac">
+    <source src="diwali_music.m4a" type="audio/mp4">
+    <source src="diwali_music.mp4" type="audio/mp4">
+    <source src="diwali_music.mp3" type="audio/mpeg">
+  </audio>
+  <video id="festiveVideoFallback" playsinline loop style="position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0.001;pointer-events:none;z-index:-9999;">
+    <source src="diwali_music.mp4" type="video/mp4">
+  </video>
+
+  <!-- Surprise Tap-To-Open Overlay (Envelope / Gift Box) -->
+  <div id="surpriseOverlay" class="surprise-overlay">
+    <div class="surprise-card">
+      <div class="surprise-sparkles">✨ 🪔 💖 🪔 ✨</div>
+      <div class="surprise-tag" id="surpriseTag">A Special Surprise for My Favorite Madam 🎁</div>
+      
+      <div class="gift-box-wrapper" id="giftBoxTrigger">
+        <div class="pulsing-halo"></div>
+        <div class="diya-gift-icon">🪔</div>
+        <div class="click-ripple"></div>
+      </div>
+
+      <h2 class="surprise-heading" id="surpriseHeading">A Warm Festive Surprise ✨</h2>
+      <p class="surprise-subtext" id="surpriseSubtext">
+        Diwali ke is pyare festive season me, ek special festive greeting specially aapke liye...<br>
+        <span style="color: #ffd700; font-size: 0.95em; display: inline-block; margin-top: 6px;">Tap to open your Diwali greeting! ✨🪔</span>
+      </p>
+      
+      <button id="openSurpriseBtn" class="open-surprise-btn">
+        <span class="btn-icon">🎁</span>
+        <span class="btn-text">Tap Here to Open, My Favorite Madam! ✨</span>
+      </button>
+      
+      <div class="tap-hint">👆 Tap on the Diya or button to celebrate with music 🎶</div>
+    </div>
+  </div>
+
+  <!-- Decorative Top Toran & Hanging Kandils -->
+  <header class="festive-decorations">
+    <!-- Fairy string lights garland -->
+    <div class="fairy-lights">
+      <span class="bulb gold"></span>
+      <span class="bulb red"></span>
+      <span class="bulb green"></span>
+      <span class="bulb blue"></span>
+      <span class="bulb gold"></span>
+      <span class="bulb red"></span>
+      <span class="bulb green"></span>
+      <span class="bulb gold"></span>
+      <span class="bulb red"></span>
+      <span class="bulb green"></span>
+      <span class="bulb blue"></span>
+      <span class="bulb gold"></span>
+    </div>
+
+    <!-- Hanging Festive Lanterns (Akash Kandils) -->
+    <div class="kandils-container">
+      <div class="kandil kandil-left">
+        <div class="kandil-thread"></div>
+        <div class="kandil-body">
+          <div class="kandil-core">🪔</div>
+          <div class="kandil-tassels">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="toran-banner">
+        <span>🍃</span><span>🌼</span><span>🍃</span><span>🌺</span><span>🍃</span><span>🌼</span><span>🍃</span>
+      </div>
+
+      <div class="kandil kandil-right">
+        <div class="kandil-thread"></div>
+        <div class="kandil-body">
+          <div class="kandil-core">🪔</div>
+          <div class="kandil-tassels">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Greeting Content Container -->
+  <main class="main-wrapper">
+    <div class="wish-card">
+      
+      <!-- Dedicated Recipient Header: My Favorite Madam -->
+      <div class="recipient-badge-container">
+        <div class="sparkle-stars">✨ 🪔 💖 🪔 ✨</div>
+        <div class="recipient-intro" id="recipientIntro">Warmly & Sincerely Dedicated To</div>
+        <h1 class="recipient-name-display" id="recipientNameDisplay">
+          <span class="name-shimmer" id="recipientName">My Favorite Madam ✨</span>
+        </h1>
+        <div class="recipient-wish-label" id="recipientWishLabel">Someone Truly Special & Pure At Heart • Happy Diwali 🪔</div>
+        <div class="divider-swirl">⚜️ 🪔 ⚜️</div>
+      </div>
+
+      <!-- Festive Greeting Title -->
+      <div class="festival-title-box">
+        <h2 class="sub-greeting" id="wishGreetingFor">Wishing The Most Wonderful & Graceful</h2>
+        <div class="main-diwali-title" id="mainFestiveTitle">
+          <span class="title-glow">Happy Diwali</span>
+        </div>
+        <p class="diwali-english-sub" id="diwaliEnglishSub">LIGHTS • HAPPINESS • SUCCESS • ENDLESS SMILES ✨</p>
+      </div>
+
+      <!-- Animated Center Diya with Flickering Flame -->
+      <div class="center-diya-stage" id="interactiveDiyaStage" title="Click anywhere on the screen or diya to burst fireworks!">
+        <div class="diya-aura"></div>
+        <div class="diya-container">
+          <div class="flame-element">
+            <div class="flame-core"></div>
+            <div class="flame-glow"></div>
+            <div class="spark-bits"></div>
+          </div>
+          <div class="diya-body-pot">
+            <div class="diya-rim"></div>
+            <div class="diya-base"></div>
+          </div>
+        </div>
+        <div class="diya-plate-rangoli"></div>
+        <div class="touch-hint-bubble">✨ Tap anywhere on screen to burst fireworks! 💖</div>
+      </div>
+
+      <!-- Heartfelt Shayari for My Favorite Madam -->
+      <div class="festive-poem-box">
+        <div class="poem-quote-mark">❝</div>
+        <p class="poem-line" id="poemLine1">Diyas to aangan me roshni karte hain,</p>
+        <p class="poem-line highlight" id="poemLine2">Par aapki ek genuine smile poore din ko roshan kar deti hai! ✨</p>
+        <p class="poem-line" id="poemLine3">Jo guzar gaya use andhere ki tarah chhod dijiye,</p>
+        <p class="poem-line highlight" id="poemLine4">Ye Diwali aapki life me sukoon aur nayi umang lekar aayi hai! 🪔🌟</p>
+        <p class="poem-line" id="poemLine5">Zindagi me kuch log bina kisi shart ke dil ke bahut kareeb hote hain,</p>
+        <p class="poem-line highlight" id="poemLine6">Aur aap wahi sabse anmol insaan ho, My Favorite Madam... 🌸💖</p>
+        <p class="poem-line" id="poemLine7">May this festival bring you endless laughter, peace, success,</p>
+        <p class="poem-line highlight" id="poemLine8">Aur wo haseen muskaan jo aapke chehre pe sabse pyari lagti hai! ✨😊</p>
+        <div class="poem-bottom-wish" id="poemLine9">🪔✨ Wishing You A Warm, Joyful & Peaceful Diwali, My Favorite Madam! ✨🪔</div>
+      </div>
+
+      <!-- 3 Sweet Compliments for My Favorite Madam -->
+      <div class="flirty-cards-grid">
+        <div class="flirty-card">
+          <div class="flirty-card-header">
+            <span>🌟</span> <span>A Pure & Resilient Soul</span>
+          </div>
+          <p class="flirty-card-text">
+            Past me chahe kitna bhi dukh mila ho, aapka dil aaj bhi utna hi saaf aur pyara hai. Aapki yehi simplicity aur inner strength aapko sabse alag banati hai, My Favorite Madam! ✨
+          </p>
+        </div>
+        <div class="flirty-card">
+          <div class="flirty-card-header">
+            <span>🌸</span> <span>That Healing Smile</span>
+          </div>
+          <p class="flirty-card-text">
+            Diwali ke hazaron diyas milkar bhi utna sukoon nahi de sakte, jitni aapki ek genuine smile deti hai. Zindagi me chahe kuch bhi ho, bas ye smile kabhi mat khona! 😊🪔
+          </p>
+        </div>
+        <div class="flirty-card">
+          <div class="flirty-card-header">
+            <span>💫</span> <span>A Selfless Wish From Heart</span>
+          </div>
+          <p class="flirty-card-text">
+            Bina kisi shart aur bina kisi expectation ke, dil se bas yahi dua hai ki aapko aage sirf respect, peace aur sabse badi khushiyan milein. You truly deserve the world! 💌✨
+          </p>
+        </div>
+      </div>
+
+      <!-- Special Note for Madam (Personal, Heartfelt & Healing) -->
+      <div class="blessing-card-note">
+        <span class="blessing-icon">💌</span>
+        <p class="blessing-text">
+          <strong>Dear My Favorite Madam (Teju), 🌸</strong><br>
+          Is Diwali pe meri taraf se bas ek hi nishswarth aur dil se nikli wish hai —<br>
+          Past me jo kuch bhi hua, ye festive season un sabhi yaadon pe sukoon ki roshni bhar de. May your life be surrounded by people who truly value your kind heart, respect your presence, and cherish your smile.<br>
+          Aur haan, dil se ek baat hamesha yaad rakhna — chahe waqt kaisa bhi ho, <strong>aap mujhe kabhi nahi khoyengi</strong>. Bina kisi shart aur bina kisi expectation ke, meri respect aur selfless care aapke liye hamesha aisi hi rahegi.<br>
+          Hamesha aisi hi graceful aur strong rehna. Always wishing the absolute best for you! ✨🪔
+        </p>
+      </div>
+
+      <!-- 5 Days of Diwali Interactive Tabs -->
+      <div class="diwali-days-section">
+        <h3 class="section-title">✨ The 5 Auspicious Days of Diwali ✨</h3>
+        <div class="days-pills" id="daysPillsContainer">
+          <button class="day-pill active" data-day="0">Vasubaras</button>
+          <button class="day-pill" data-day="1">Dhanteras</button>
+          <button class="day-pill" data-day="2">Naraka Chaturdashi</button>
+          <button class="day-pill" data-day="3">Lakshmi Pujan</button>
+          <button class="day-pill" data-day="4">Diwali Padwa</button>
+        </div>
+        <div class="day-info-card" id="dayInfoCard">
+          <h4 id="dayInfoTitle">🪔 1. Vasubaras (Gowatsa Dwadashi)</h4>
+          <p id="dayInfoDesc">A day celebrating divine affection and maternal bond with gratitude and reverence. Wishing you peace and harmony!</p>
+        </div>
+      </div>
+
+      <!-- Bottom Greetings Footer -->
+      <footer class="wishing-footer">
+        <div class="footer-diyas">
+          <span>🪔</span><span>✨</span><span>🪔</span><span>✨</span><span>🪔</span>
+        </div>
+        <p class="footer-blessing">
+          May every diya bring endless peace, true happiness, and genuine smiles into your life!<br>
+          Always standing by your side with pure wishes, My Favorite Madam! ✨
+        </p>
+        <p class="copyright-text">Made with pure warmth & selfless care | Exclusively for My Favorite Madam 🪔✨</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Message -->
+  <div id="toastNotification" class="toast-popup">
+    <span class="toast-icon">✅</span>
+    <span class="toast-message" id="toastMessage">Link copied to clipboard! Share it on WhatsApp.</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
