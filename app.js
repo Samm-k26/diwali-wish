@@ -458,7 +458,19 @@ function openSurprise() {
 // ============================================================
 // 8. INITIALIZATION & EVENT LISTENERS
 // ============================================================
+function updatePhoneMockTime() {
+  const timeElem = document.getElementById('phoneMockTime');
+  if (!timeElem) return;
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  timeElem.textContent = `${hours}:${minutes}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  updatePhoneMockTime();
+  setInterval(updatePhoneMockTime, 30000);
+
   const customRecipient = getRecipientNameFromURL();
   if (customRecipient) {
     updateRecipientNameUI(customRecipient);
@@ -494,6 +506,18 @@ document.addEventListener('DOMContentLoaded', () => {
     interactiveDiyaStage.addEventListener('click', () => {
       initAudioContext();
       triggerCustomFirework(window.innerWidth / 2, window.innerHeight * 0.35);
+    });
+  }
+
+  // Tap anywhere on card to burst fireworks
+  const greetingWishCard = document.getElementById('greetingWishCard');
+  if (greetingWishCard) {
+    greetingWishCard.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('button') || e.target.closest('a') || e.target.closest('.day-pill') || e.target.closest('.center-diya-stage')) {
+        return;
+      }
+      initAudioContext();
+      triggerCustomFirework(e.clientX, e.clientY);
     });
   }
 

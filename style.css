@@ -1,7 +1,7 @@
 /* ============================================================
-   DIWALI WISH LINK - FESTIVE STYLESHEET (ENGLISH EDITION)
-   Dedicated Greeting for Respected Teju Madam
-   Royal Gold, Glowing Diyas, Fireworks & Responsive Card
+   DIWALI WISH LINK - PHONE ASPECT RATIO EDITION
+   Dedicated Greeting for My Favorite Madam (Teju)
+   Royal Gold, Glowing Diyas, Fireworks & Smartphone Ratio Layout
    ============================================================ */
 
 :root {
@@ -11,7 +11,7 @@
   --saffron: #ff6b35;
   --maroon: #800020;
   --bg-deep: #080318;
-  --bg-card: rgba(26, 11, 46, 0.88);
+  --bg-card: rgba(26, 11, 46, 0.90);
   --bg-card-border: rgba(251, 191, 36, 0.35);
   --text-primary: #fffbeb;
   --text-secondary: #fef3c7;
@@ -32,14 +32,23 @@
 html, body {
   width: 100%;
   min-height: 100%;
-  background: radial-gradient(ellipse at top, #1e0938 0%, #100424 50%, #060111 100%);
+  background: radial-gradient(ellipse at center, #18062d 0%, #0c0217 60%, #030008 100%);
   color: var(--text-primary);
   font-family: var(--font-body);
   overflow-x: hidden;
   position: relative;
 }
 
-/* Background Canvas for Fireworks */
+/* On Desktop: Center the Phone Mockup with ambient backdrop */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px 12px;
+}
+
+/* Background Canvas for Fireworks (Stretches across entire screen) */
 #fireworksCanvas {
   position: fixed;
   top: 0;
@@ -47,35 +56,147 @@ html, body {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  pointer-events: auto; /* Click anywhere on canvas to burst fireworks */
+  pointer-events: auto; /* Click anywhere on screen to burst fireworks */
 }
 
-/* Top Audio Bar */
-.audio-control-bar {
-  position: fixed;
-  top: 14px;
-  right: 14px;
-  z-index: 100;
+/* ============================================================
+   PHONE RATIO VIEWPORT CONTAINER (9:19.5 SMARTPHONE RATIO)
+   ============================================================ */
+.phone-viewport-container {
+  position: relative;
+  width: 100%;
+  max-width: 424px; /* Standard smartphone width: ~414px - 424px */
+  height: min(890px, calc(100vh - 32px));
+  margin: 0 auto;
+  border-radius: 46px;
+  border: 3.5px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 
+    0 0 0 3px #0c0217,
+    0 0 0 6px rgba(251, 191, 36, 0.22),
+    0 0 45px rgba(245, 158, 11, 0.35),
+    0 25px 80px rgba(0, 0, 0, 0.95);
+  background: radial-gradient(ellipse at top, #1e0938 0%, #100424 50%, #060111 100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  z-index: 10;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+}
+
+/* Elegant gold scrollbar inside phone frame */
+.phone-viewport-container::-webkit-scrollbar {
+  width: 5px;
+}
+.phone-viewport-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.phone-viewport-container::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.35);
+  border-radius: 10px;
+}
+.phone-viewport-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(251, 191, 36, 0.7);
+}
+
+/* ============================================================
+   PHONE TOP STATUS BAR & DYNAMIC ISLAND (DESKTOP)
+   ============================================================ */
+.phone-status-bar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 8px 18px 6px;
+  position: sticky;
+  top: 0;
+  z-index: 150;
+  background: rgba(16, 4, 36, 0.96);
+  backdrop-filter: blur(10px);
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  pointer-events: none;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.12);
+}
+
+.status-time {
+  font-weight: 700;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+  color: #fde68a;
+  font-size: 0.8rem;
+}
+
+.dynamic-island {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #000;
+  padding: 3px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.island-camera {
+  width: 7px;
+  height: 7px;
+  background: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 50%;
+}
+
+.island-glow {
+  font-size: 0.75rem;
+  animation: diyaGlow 1.8s infinite alternate;
+}
+
+@keyframes diyaGlow {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 6px #ffd700); }
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+}
+
+.signal-icon {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #10b981;
+}
+
+/* ============================================================
+   TOP AUDIO FLOATING BAR
+   ============================================================ */
+.audio-control-bar {
+  position: sticky;
+  top: 40px;
+  z-index: 120;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 14px 0;
+  margin-bottom: -38px;
+  pointer-events: none;
 }
 
 .audio-btn {
-  background: rgba(20, 10, 35, 0.85);
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  pointer-events: auto;
+  background: rgba(20, 10, 35, 0.88);
+  border: 1px solid rgba(251, 191, 36, 0.45);
   color: #fbbf24;
-  padding: 7px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
+  gap: 6px;
+  font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
   font-family: var(--font-body);
 }
 
@@ -89,20 +210,20 @@ html, body {
   display: flex;
   align-items: flex-end;
   gap: 2px;
-  height: 14px;
+  height: 12px;
 }
 
 .sound-wave span {
-  width: 3px;
+  width: 2.5px;
   background-color: #ffd700;
   border-radius: 2px;
   animation: waveAnim 1s ease-in-out infinite alternate;
 }
 
-.sound-wave span:nth-child(1) { height: 4px; animation-delay: 0.1s; }
-.sound-wave span:nth-child(2) { height: 12px; animation-delay: 0.3s; }
-.sound-wave span:nth-child(3) { height: 8px; animation-delay: 0.2s; }
-.sound-wave span:nth-child(4) { height: 14px; animation-delay: 0.4s; }
+.sound-wave span:nth-child(1) { height: 3px; animation-delay: 0.1s; }
+.sound-wave span:nth-child(2) { height: 10px; animation-delay: 0.3s; }
+.sound-wave span:nth-child(3) { height: 6px; animation-delay: 0.2s; }
+.sound-wave span:nth-child(4) { height: 12px; animation-delay: 0.4s; }
 
 .audio-btn.muted .sound-wave span {
   height: 2px;
@@ -112,21 +233,22 @@ html, body {
 
 @keyframes waveAnim {
   0% { height: 3px; }
-  100% { height: 14px; }
+  100% { height: 12px; }
 }
 
 /* ============================================================
    SURPRISE OVERLAY (TAP TO OPEN)
    ============================================================ */
 .surprise-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, #230b42 0%, #0a0316 80%);
+  background: radial-gradient(circle at center, rgba(34, 11, 62, 0.98) 0%, rgba(10, 3, 22, 0.99) 85%);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
+  border-radius: inherit;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
@@ -139,46 +261,46 @@ html, body {
 }
 
 .surprise-card {
-  background: linear-gradient(145deg, rgba(38, 14, 69, 0.95), rgba(18, 5, 36, 0.95));
+  background: linear-gradient(145deg, rgba(38, 14, 69, 0.96), rgba(18, 5, 36, 0.96));
   border: 2px solid #ffd700;
-  border-radius: 24px;
-  padding: 36px 24px;
+  border-radius: 22px;
+  padding: 30px 18px;
   text-align: center;
-  max-width: 400px;
+  max-width: 360px;
   width: 100%;
-  box-shadow: 0 0 45px rgba(255, 215, 0, 0.4), 0 15px 35px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.35), 0 15px 35px rgba(0, 0, 0, 0.8);
   position: relative;
   animation: surpriseFloat 3s ease-in-out infinite alternate;
 }
 
 @keyframes surpriseFloat {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
+  100% { transform: translateY(-6px); }
 }
 
 .surprise-sparkles {
-  font-size: 1.6rem;
-  margin-bottom: 8px;
-  letter-spacing: 8px;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  letter-spacing: 6px;
 }
 
 .surprise-tag {
   display: inline-block;
   background: linear-gradient(90deg, #dc2626, #f59e0b);
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 5px 16px;
-  border-radius: 14px;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+  padding: 4px 14px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
 }
 
 .gift-box-wrapper {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 20px;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +308,7 @@ html, body {
 }
 
 .diya-gift-icon {
-  font-size: 5rem;
+  font-size: 4.5rem;
   z-index: 2;
   filter: drop-shadow(0 0 25px rgba(255, 200, 0, 0.9));
   animation: giftBounce 1.6s ease-in-out infinite;
@@ -194,13 +316,13 @@ html, body {
 
 @keyframes giftBounce {
   0%, 100% { transform: scale(1) translateY(0); }
-  50% { transform: scale(1.1) translateY(-10px); }
+  50% { transform: scale(1.08) translateY(-8px); }
 }
 
 .pulsing-halo {
   position: absolute;
-  width: 130px;
-  height: 130px;
+  width: 115px;
+  height: 115px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(255, 100, 0, 0) 70%);
   animation: pulseAura 2s infinite ease-out;
@@ -208,23 +330,23 @@ html, body {
 
 @keyframes pulseAura {
   0% { transform: scale(0.8); opacity: 0.8; }
-  100% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.45); opacity: 0; }
 }
 
 .surprise-heading {
   font-family: var(--font-display);
-  font-size: 1.65rem;
+  font-size: 1.45rem;
   color: #ffd700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: 0.5px;
   text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
 }
 
 .surprise-subtext {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
-  line-height: 1.55;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 .open-surprise-btn {
@@ -232,28 +354,28 @@ html, body {
   background: linear-gradient(135deg, #f59e0b, #dc2626);
   border: 1px solid #ffd700;
   color: #fff;
-  padding: 14px 20px;
-  font-size: 1.05rem;
+  padding: 12px 18px;
+  font-size: 0.96rem;
   font-weight: 700;
-  border-radius: 30px;
+  border-radius: 26px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: all 0.25s ease;
   font-family: var(--font-body);
 }
 
 .open-surprise-btn:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   box-shadow: 0 8px 25px rgba(245, 158, 11, 0.7);
 }
 
 .tap-hint {
-  margin-top: 14px;
-  font-size: 0.8rem;
+  margin-top: 12px;
+  font-size: 0.75rem;
   color: #cbd5e1;
   opacity: 0.85;
 }
@@ -266,28 +388,29 @@ html, body {
   z-index: 10;
   width: 100%;
   pointer-events: none;
+  padding-top: 4px;
 }
 
 .fairy-lights {
   display: flex;
   justify-content: space-around;
-  padding: 4px 10px;
+  padding: 4px 8px;
   position: relative;
   z-index: 12;
 }
 
 .bulb {
-  width: 10px;
-  height: 14px;
+  width: 8px;
+  height: 12px;
   border-radius: 50% 50% 40% 40%;
   display: inline-block;
   animation: bulbFlicker 1.8s infinite alternate;
 }
 
-.bulb.gold { background: #ffd700; box-shadow: 0 0 12px #ffd700; animation-delay: 0.1s; }
-.bulb.red { background: #ff2a2a; box-shadow: 0 0 12px #ff2a2a; animation-delay: 0.4s; }
-.bulb.green { background: #00ff88; box-shadow: 0 0 12px #00ff88; animation-delay: 0.7s; }
-.bulb.blue { background: #00e1ff; box-shadow: 0 0 12px #00e1ff; animation-delay: 0.2s; }
+.bulb.gold { background: #ffd700; box-shadow: 0 0 10px #ffd700; animation-delay: 0.1s; }
+.bulb.red { background: #ff2a2a; box-shadow: 0 0 10px #ff2a2a; animation-delay: 0.4s; }
+.bulb.green { background: #00ff88; box-shadow: 0 0 10px #00ff88; animation-delay: 0.7s; }
+.bulb.blue { background: #00e1ff; box-shadow: 0 0 10px #00e1ff; animation-delay: 0.2s; }
 
 @keyframes bulbFlicker {
   0%, 100% { opacity: 0.4; transform: scale(0.85); }
@@ -298,8 +421,8 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 20px;
-  margin-top: -5px;
+  padding: 0 12px;
+  margin-top: -4px;
 }
 
 .kandil {
@@ -315,13 +438,13 @@ html, body {
 }
 
 @keyframes kandilSwing {
-  0% { transform: rotate(-5deg); }
-  100% { transform: rotate(5deg); }
+  0% { transform: rotate(-4deg); }
+  100% { transform: rotate(4deg); }
 }
 
 .kandil-thread {
   width: 2px;
-  height: 35px;
+  height: 28px;
   background: linear-gradient(to bottom, #ffd700, #f59e0b);
 }
 
@@ -331,86 +454,87 @@ html, body {
 }
 
 .kandil-core {
-  font-size: 2.2rem;
-  filter: drop-shadow(0 0 15px rgba(255, 180, 0, 0.8));
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 12px rgba(255, 180, 0, 0.8));
 }
 
 .kandil-tassels {
   display: flex;
   justify-content: center;
-  gap: 3px;
-  margin-top: -6px;
+  gap: 2.5px;
+  margin-top: -4px;
 }
 
 .kandil-tassels span {
-  width: 3px;
-  height: 18px;
+  width: 2.5px;
+  height: 14px;
   background: linear-gradient(to bottom, #ffd700, #dc2626);
   border-radius: 2px;
 }
 
 .toran-banner {
-  font-size: 1.2rem;
-  letter-spacing: 4px;
+  font-size: 1.05rem;
+  letter-spacing: 3px;
   opacity: 0.85;
-  padding-top: 6px;
+  padding-top: 4px;
 }
 
 /* ============================================================
-   MAIN WRAPPER & FESTIVE CARD
+   MAIN WRAPPER & FESTIVE CARD (PHONE PROPORTIONS)
    ============================================================ */
 .main-wrapper {
   position: relative;
   z-index: 15;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 10px 16px 100px; /* bottom padding for sticky bar */
+  width: 100%;
+  padding: 6px 12px 35px;
 }
 
 .wish-card {
   background: var(--bg-card);
   border: 1.5px solid var(--bg-card-border);
-  border-radius: 28px;
-  padding: 30px 22px;
-  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.65), 0 0 35px rgba(245, 158, 11, 0.25);
+  border-radius: 24px;
+  padding: 22px 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65), 0 0 25px rgba(245, 158, 11, 0.2);
   backdrop-filter: blur(14px);
   text-align: center;
 }
 
 /* Dedicated Recipient Badge for Teju Madam */
 .recipient-badge-container {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .sparkle-stars {
-  font-size: 1.3rem;
-  margin-bottom: 6px;
-  letter-spacing: 6px;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+  letter-spacing: 5px;
 }
 
 .recipient-intro {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   color: #fde68a;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .recipient-name-display {
   font-family: var(--font-display);
-  font-size: 3rem;
-  line-height: 1.2;
+  font-size: clamp(1.75rem, 6.8vw, 2.3rem);
+  line-height: 1.25;
   margin: 4px 0 6px;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  word-break: break-word;
 }
 
 .recipient-wish-label {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   color: #fef08a;
   opacity: 0.95;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
 .name-shimmer {
@@ -426,7 +550,7 @@ html, body {
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
   animation: shineGradient 3s linear infinite;
   display: inline-block;
 }
@@ -437,29 +561,29 @@ html, body {
 }
 
 .divider-swirl {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #f59e0b;
   opacity: 0.9;
-  letter-spacing: 8px;
+  letter-spacing: 6px;
 }
 
 /* Festival Title */
 .festival-title-box {
-  margin: 18px 0 22px;
+  margin: 14px 0 18px;
 }
 
 .sub-greeting {
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-weight: 400;
   color: #fde68a;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .main-diwali-title {
   font-family: var(--font-display);
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 8.8vw, 3rem);
   line-height: 1.15;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   font-weight: 800;
 }
 
@@ -468,13 +592,13 @@ html, body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(245, 158, 11, 0.8));
+  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.8));
 }
 
 .diwali-english-sub {
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 3.5px;
+  letter-spacing: 2.5px;
   color: #f59e0b;
   margin-top: 4px;
   text-transform: uppercase;
@@ -485,18 +609,18 @@ html, body {
    ============================================================ */
 .center-diya-stage {
   position: relative;
-  padding: 20px 0 15px;
+  padding: 16px 0 12px;
   cursor: pointer;
   user-select: none;
 }
 
 .diya-aura {
   position: absolute;
-  top: 15px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 140px;
-  height: 120px;
+  width: 120px;
+  height: 100px;
   background: radial-gradient(circle, rgba(255, 180, 0, 0.5) 0%, rgba(255, 80, 0, 0.15) 50%, transparent 70%);
   border-radius: 50%;
   animation: auraPulse 2.5s infinite ease-in-out alternate;
@@ -509,22 +633,22 @@ html, body {
 
 .diya-container {
   position: relative;
-  width: 100px;
-  height: 80px;
+  width: 90px;
+  height: 72px;
   margin: 0 auto;
 }
 
 /* Flame animation */
 .flame-element {
   position: absolute;
-  top: -16px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  width: 22px;
-  height: 38px;
+  width: 20px;
+  height: 34px;
   background: linear-gradient(to bottom, #ffffff 0%, #fff066 30%, #ff8800 70%, #ff2200 100%);
   border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
-  filter: drop-shadow(0 0 15px #ffd700);
+  filter: drop-shadow(0 0 12px #ffd700);
   animation: flameFlicker 1.4s ease-in-out infinite alternate;
   transform-origin: bottom center;
   z-index: 5;
@@ -533,25 +657,22 @@ html, body {
 @keyframes flameFlicker {
   0% {
     transform: translateX(-50%) scale(0.95, 1.05) rotate(-2deg);
-    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
   }
   50% {
     transform: translateX(-50%) scale(1.05, 0.95) rotate(2deg);
-    border-radius: 50% 50% 25% 25% / 65% 65% 35% 35%;
   }
   100% {
     transform: translateX(-50%) scale(0.98, 1.02) rotate(-1deg);
-    border-radius: 48% 52% 20% 20% / 58% 62% 40% 40%;
   }
 }
 
 .flame-core {
   position: absolute;
-  bottom: 3px;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 14px;
+  width: 7px;
+  height: 12px;
   background: #ffffff;
   border-radius: 50%;
   opacity: 0.9;
@@ -563,36 +684,36 @@ html, body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 86px;
-  height: 38px;
+  width: 78px;
+  height: 34px;
   background: linear-gradient(180deg, #c2410c 0%, #9a3412 60%, #7c2d12 100%);
-  border-radius: 0 0 50px 50px;
+  border-radius: 0 0 45px 45px;
   border-top: 3px solid #f97316;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7), inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7), inset 0 -3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .diya-body-pot::before {
   content: '';
   position: absolute;
-  top: -6px;
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 82px;
-  height: 12px;
+  width: 74px;
+  height: 10px;
   background: radial-gradient(ellipse at center, #78350f 0%, #451a03 80%);
   border-radius: 50%;
   border: 1px solid #d97706;
 }
 
 .touch-hint-bubble {
-  margin-top: 14px;
+  margin-top: 12px;
   display: inline-block;
   background: rgba(251, 191, 36, 0.15);
   border: 1px dashed rgba(251, 191, 36, 0.4);
   color: #fef08a;
-  font-size: 0.82rem;
-  padding: 5px 14px;
-  border-radius: 20px;
+  font-size: 0.76rem;
+  padding: 4px 12px;
+  border-radius: 18px;
   animation: hintPulse 2s infinite;
 }
 
@@ -605,26 +726,26 @@ html, body {
    FESTIVE POEM / SHAYARI
    ============================================================ */
 .festive-poem-box {
-  background: linear-gradient(135deg, rgba(76, 29, 149, 0.25), rgba(180, 83, 9, 0.2));
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  border-radius: 18px;
-  padding: 22px 20px;
-  margin: 20px 0 15px;
+  background: linear-gradient(135deg, rgba(76, 29, 149, 0.28), rgba(180, 83, 9, 0.2));
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  border-radius: 16px;
+  padding: 18px 14px;
+  margin: 16px 0 14px;
   position: relative;
 }
 
 .poem-quote-mark {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   line-height: 1;
   color: #f59e0b;
   opacity: 0.4;
-  margin-bottom: -15px;
+  margin-bottom: -12px;
 }
 
 .poem-line {
   font-family: var(--font-serif);
-  font-size: 1.18rem;
-  line-height: 1.65;
+  font-size: clamp(0.95rem, 3.7vw, 1.12rem);
+  line-height: 1.6;
   color: #fffbeb;
   margin: 4px 0;
 }
@@ -635,34 +756,82 @@ html, body {
 }
 
 .poem-bottom-wish {
-  margin-top: 14px;
-  padding-top: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
   border-top: 1px dashed rgba(251, 191, 36, 0.3);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: #ffd700;
+  line-height: 1.45;
+}
+
+/* ============================================================
+   3 COMPLIMENT CARDS (VERTICAL PHONE STACK)
+   ============================================================ */
+.flirty-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.flirty-card {
+  background: linear-gradient(145deg, rgba(236, 72, 153, 0.16), rgba(124, 58, 237, 0.22));
+  border: 1px solid rgba(244, 114, 182, 0.4);
+  border-radius: 16px;
+  padding: 13px 14px;
+  text-align: left;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.flirty-card:hover {
+  transform: translateY(-2px);
+  border-color: #f472b6;
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35);
+}
+
+.flirty-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fbcfe8;
+  margin-bottom: 5px;
+  font-family: var(--font-body);
+}
+
+.flirty-card-text {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #fff1f2;
+  margin: 0;
+  font-family: var(--font-body);
 }
 
 /* Special Blessing Note Card */
 .blessing-card-note {
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  border-radius: 14px;
-  padding: 14px 18px;
-  margin-bottom: 20px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 16px;
+  padding: 13px 14px;
+  margin-bottom: 18px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 10px;
   text-align: left;
 }
 
 .blessing-icon {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .blessing-text {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.55;
   color: #fef3c7;
 }
@@ -671,42 +840,42 @@ html, body {
    5 DAYS OF DIWALI TABS
    ============================================================ */
 .diwali-days-section {
-  margin: 22px 0;
+  margin: 18px 0;
   text-align: center;
 }
 
 .section-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: #ffd700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
 .days-pills {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   overflow-x: auto;
-  padding: 4px 2px 10px;
+  padding: 4px 2px 8px;
   scrollbar-width: thin;
   scrollbar-color: #f59e0b transparent;
 }
 
 .days-pills::-webkit-scrollbar {
-  height: 4px;
+  height: 3px;
 }
 
 .days-pills::-webkit-scrollbar-thumb {
   background: #f59e0b;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .day-pill {
-  background: rgba(30, 15, 50, 0.8);
+  background: rgba(30, 15, 50, 0.85);
   border: 1px solid rgba(251, 191, 36, 0.3);
   color: #f3f4f6;
-  padding: 6px 14px;
-  border-radius: 16px;
-  font-size: 0.82rem;
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-size: 0.78rem;
   font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
@@ -719,210 +888,56 @@ html, body {
   border-color: #ffd700;
   color: #000;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
 }
 
 .day-info-card {
-  background: rgba(20, 8, 38, 0.9);
+  background: rgba(20, 8, 38, 0.92);
   border: 1px solid rgba(251, 191, 36, 0.25);
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   text-align: left;
   margin-top: 6px;
   transition: all 0.3s ease;
 }
 
 .day-info-card h4 {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: #fde047;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .day-info-card p {
-  font-size: 0.86rem;
+  font-size: 0.8rem;
   color: #e2e8f0;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 /* ============================================================
-   SHARE BOX (SEND TO TEJU MADAM)
+   FOOTER
    ============================================================ */
-.link-creator-card {
-  background: linear-gradient(145deg, rgba(46, 16, 85, 0.95), rgba(28, 8, 55, 0.95));
-  border: 2px solid #f59e0b;
-  border-radius: 22px;
-  padding: 22px 18px;
-  margin: 25px 0 15px;
-  box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
-  position: relative;
-}
-
-.creator-header {
-  margin-bottom: 16px;
-}
-
-.creator-icon {
-  font-size: 2rem;
-  margin-bottom: 4px;
-}
-
-.creator-title {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  color: #ffd700;
-  margin-bottom: 4px;
-  letter-spacing: 0.5px;
-}
-
-.creator-subtitle {
-  font-size: 0.86rem;
-  color: #fef3c7;
-  opacity: 0.9;
-}
-
-/* Action Buttons Grid */
-.action-buttons-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-@media (max-width: 420px) {
-  .action-buttons-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.action-btn {
-  border: none;
-  border-radius: 14px;
-  padding: 12px 16px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-  font-family: var(--font-body);
-}
-
-.btn-whatsapp {
-  background: linear-gradient(135deg, #25d366, #128c7e);
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-}
-
-.btn-whatsapp:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-}
-
-.btn-copy {
-  background: linear-gradient(135deg, #d97706, #b45309);
-  color: #fff;
-  border: 1px solid #ffd700;
-  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
-}
-
-.btn-copy:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.6);
-}
-
-/* Generated Link Preview Box */
-.link-preview-box {
-  background: rgba(10, 3, 22, 0.85);
-  border: 1px dashed rgba(251, 191, 36, 0.4);
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 0.8rem;
-  color: #93c5fd;
-  word-break: break-all;
-  text-align: left;
-}
-
-/* Footer */
 .wishing-footer {
-  margin-top: 24px;
-  padding-top: 16px;
+  margin-top: 18px;
+  padding-top: 14px;
   border-top: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .footer-diyas {
-  font-size: 1.2rem;
-  letter-spacing: 6px;
-  margin-bottom: 8px;
+  font-size: 1.1rem;
+  letter-spacing: 5px;
+  margin-bottom: 6px;
 }
 
 .footer-blessing {
-  font-size: 0.86rem;
-  line-height: 1.55;
+  font-size: 0.8rem;
+  line-height: 1.5;
   color: #fde68a;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .copyright-text {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #9ca3af;
-}
-
-/* ============================================================
-   STICKY BOTTOM SHARE BAR (MOBILE)
-   ============================================================ */
-.sticky-share-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(15, 5, 30, 0.95);
-  border-top: 1.5px solid #25d366;
-  backdrop-filter: blur(12px);
-  padding: 10px 16px;
-  z-index: 99;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
-  transform: translateY(120%);
-  transition: transform 0.3s ease;
-}
-
-.sticky-share-bar.visible {
-  transform: translateY(0);
-}
-
-.sticky-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 580px;
-  gap: 12px;
-}
-
-.sticky-text {
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: #ffd700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sticky-btn-wa {
-  background: #25d366;
-  color: #fff;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(37, 211, 102, 0.5);
 }
 
 /* ============================================================
@@ -930,19 +945,19 @@ html, body {
    ============================================================ */
 .toast-popup {
   position: fixed;
-  bottom: 80px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%) translateY(30px);
   background: #1e293b;
   border: 1.5px solid #10b981;
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 0.88rem;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.82rem;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   z-index: 1001;
   opacity: 0;
@@ -960,74 +975,42 @@ html, body {
 }
 
 /* ============================================================
-   FLIRTY COMPLIMENT CARDS
+   MOBILE RESPONSIVENESS (ACTUAL SMARTPHONES <= 480px)
+   Seamless edge-to-edge full mobile screen
    ============================================================ */
-.flirty-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 18px 0;
-}
-
-@media (min-width: 540px) {
-  .flirty-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+    margin: 0;
+    display: block;
+    min-height: 100dvh;
+    background: radial-gradient(ellipse at top, #1e0938 0%, #100424 50%, #060111 100%);
   }
-}
 
-.flirty-card {
-  background: linear-gradient(145deg, rgba(236, 72, 153, 0.15), rgba(124, 58, 237, 0.2));
-  border: 1px solid rgba(244, 114, 182, 0.4);
-  border-radius: 16px;
-  padding: 15px 16px;
-  text-align: left;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.flirty-card:hover {
-  transform: translateY(-3px);
-  border-color: #f472b6;
-  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
-}
-
-.flirty-card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.96rem;
-  font-weight: 700;
-  color: #fbcfe8;
-  margin-bottom: 6px;
-  font-family: var(--font-body);
-}
-
-.flirty-card-text {
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: #fff1f2;
-  margin: 0;
-  font-family: var(--font-body);
-}
-
-/* ============================================================
-   MEDIA QUERIES (DESKTOP & LARGER SCREENS)
-   ============================================================ */
-@media (min-width: 640px) {
-  .wish-card {
-    padding: 38px 34px;
+  .phone-viewport-container {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+    padding-top: env(safe-area-inset-top, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
-  
-  .recipient-name-display {
-    font-size: 3.4rem;
+
+  .phone-status-bar {
+    display: none; /* Native phone status bar displays instead */
   }
-  
-  .main-diwali-title {
-    font-size: 4rem;
+
+  .audio-control-bar {
+    top: 10px;
   }
-  
-  .poem-line {
-    font-size: 1.25rem;
+
+  .surprise-overlay {
+    position: fixed;
+    inset: 0;
+    border-radius: 0;
   }
 }
