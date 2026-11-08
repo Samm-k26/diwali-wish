@@ -1,7 +1,7 @@
 /* ============================================================
-   DIWALI WISH LINK - PHONE ASPECT RATIO EDITION
+   DIWALI WISH LINK - RESPONSIVE FESTIVE EDITION
    Dedicated Greeting for My Favorite Madam (Teju)
-   Royal Gold, Glowing Diyas, Fireworks & Smartphone Ratio Layout
+   Royal Gold, Glowing Diyas, Fireworks & Interactive Music
    ============================================================ */
 
 :root {
@@ -39,13 +39,11 @@ html, body {
   position: relative;
 }
 
-/* On Desktop: Center the Phone Mockup with ambient backdrop */
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  padding: 16px 12px;
+  display: block;
 }
 
 /* Background Canvas for Fireworks (Stretches across entire screen) */
@@ -60,125 +58,31 @@ body {
 }
 
 /* ============================================================
-   PHONE RATIO VIEWPORT CONTAINER (9:19.5 SMARTPHONE RATIO)
+   MAIN PAGE CONTAINER (RESPONSIVE FOR ALL SCREEN SIZES)
    ============================================================ */
-.phone-viewport-container {
+.page-container {
   position: relative;
   width: 100%;
-  max-width: 424px; /* Standard smartphone width: ~414px - 424px */
-  height: min(890px, calc(100vh - 32px));
+  max-width: 760px;
   margin: 0 auto;
-  border-radius: 46px;
-  border: 3.5px solid rgba(251, 191, 36, 0.45);
-  box-shadow: 
-    0 0 0 3px #0c0217,
-    0 0 0 6px rgba(251, 191, 36, 0.22),
-    0 0 45px rgba(245, 158, 11, 0.35),
-    0 25px 80px rgba(0, 0, 0, 0.95);
-  background: radial-gradient(ellipse at top, #1e0938 0%, #100424 50%, #060111 100%);
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  z-index: 10;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-/* Elegant gold scrollbar inside phone frame */
-.phone-viewport-container::-webkit-scrollbar {
-  width: 5px;
-}
-.phone-viewport-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-.phone-viewport-container::-webkit-scrollbar-thumb {
-  background: rgba(251, 191, 36, 0.35);
-  border-radius: 10px;
-}
-.phone-viewport-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(251, 191, 36, 0.7);
-}
-
-/* ============================================================
-   PHONE TOP STATUS BAR & DYNAMIC ISLAND (DESKTOP)
-   ============================================================ */
-.phone-status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 18px 6px;
-  position: sticky;
-  top: 0;
-  z-index: 150;
-  background: rgba(16, 4, 36, 0.96);
-  backdrop-filter: blur(10px);
-  font-size: 0.75rem;
-  color: #cbd5e1;
-  pointer-events: none;
-  border-bottom: 1px solid rgba(251, 191, 36, 0.12);
-}
-
-.status-time {
-  font-weight: 700;
-  font-family: var(--font-body);
-  letter-spacing: 0.5px;
-  color: #fde68a;
-  font-size: 0.8rem;
-}
-
-.dynamic-island {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #000;
-  padding: 3px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(251, 191, 36, 0.25);
-}
-
-.island-camera {
-  width: 7px;
-  height: 7px;
-  background: #1e293b;
-  border: 1px solid #475569;
-  border-radius: 50%;
-}
-
-.island-glow {
-  font-size: 0.75rem;
-  animation: diyaGlow 1.8s infinite alternate;
-}
-
-@keyframes diyaGlow {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 6px #ffd700); }
-}
-
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.75rem;
-}
-
-.signal-icon {
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: #10b981;
+  z-index: 10;
+  padding: 24px 16px 60px;
 }
 
 /* ============================================================
    TOP AUDIO FLOATING BAR
    ============================================================ */
 .audio-control-bar {
-  position: sticky;
-  top: 40px;
-  z-index: 120;
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1200;
   display: flex;
   justify-content: flex-end;
-  padding: 8px 14px 0;
-  margin-bottom: -38px;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .audio-btn {
@@ -240,18 +144,18 @@ body {
    SURPRISE OVERLAY (TAP TO OPEN)
    ============================================================ */
 .surprise-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: radial-gradient(circle at center, rgba(34, 11, 62, 0.98) 0%, rgba(10, 3, 22, 0.99) 85%);
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  border-radius: inherit;
+  padding: 20px 16px;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  backdrop-filter: blur(10px);
 }
 
 .surprise-overlay.hidden {
@@ -480,21 +384,23 @@ body {
 }
 
 /* ============================================================
-   MAIN WRAPPER & FESTIVE CARD (PHONE PROPORTIONS)
+   MAIN WRAPPER & FESTIVE CARD
    ============================================================ */
 .main-wrapper {
   position: relative;
   z-index: 15;
   width: 100%;
-  padding: 6px 12px 35px;
+  padding: 10px 0 35px;
 }
 
 .wish-card {
   background: var(--bg-card);
   border: 1.5px solid var(--bg-card-border);
-  border-radius: 24px;
-  padding: 22px 14px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65), 0 0 25px rgba(245, 158, 11, 0.2);
+  border-radius: 28px;
+  padding: 32px 24px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.7), 
+    0 0 30px rgba(245, 158, 11, 0.22);
   backdrop-filter: blur(14px);
   text-align: center;
 }
@@ -766,13 +672,13 @@ body {
 }
 
 /* ============================================================
-   3 COMPLIMENT CARDS (VERTICAL PHONE STACK)
+   3 COMPLIMENT CARDS
    ============================================================ */
 .flirty-cards-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 16px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
 }
 
 .flirty-card {
@@ -975,42 +881,25 @@ body {
 }
 
 /* ============================================================
-   MOBILE RESPONSIVENESS (ACTUAL SMARTPHONES <= 480px)
-   Seamless edge-to-edge full mobile screen
+   RESPONSIVE DESIGN (MOBILE & TABLET ADJUSTMENTS)
    ============================================================ */
-@media (max-width: 480px) {
-  body {
-    padding: 0;
-    margin: 0;
-    display: block;
-    min-height: 100dvh;
-    background: radial-gradient(ellipse at top, #1e0938 0%, #100424 50%, #060111 100%);
+@media (max-width: 640px) {
+  .page-container {
+    padding: 16px 12px 45px;
   }
 
-  .phone-viewport-container {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    min-height: 100dvh;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    overflow: visible;
-    padding-top: env(safe-area-inset-top, 0);
-    padding-bottom: env(safe-area-inset-bottom, 0);
+  .wish-card {
+    padding: 22px 14px;
+    border-radius: 20px;
   }
 
-  .phone-status-bar {
-    display: none; /* Native phone status bar displays instead */
+  .flirty-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .audio-control-bar {
-    top: 10px;
-  }
-
-  .surprise-overlay {
-    position: fixed;
-    inset: 0;
-    border-radius: 0;
+    top: 12px;
+    right: 12px;
   }
 }

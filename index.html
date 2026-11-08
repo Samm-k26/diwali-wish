@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🪔 Happy Diwali | A Special Festive Surprise for My Favorite Madam 💖</title>
 
   <!-- Open Graph / WhatsApp Preview Meta Tags -->
@@ -23,60 +23,46 @@
   <!-- Fullscreen Canvas for dynamic fireworks and sparkles -->
   <canvas id="fireworksCanvas"></canvas>
 
-  <!-- Mobile Phone Aspect Ratio Container -->
-  <div class="phone-viewport-container" id="phoneContainer">
-
-    <!-- Phone Top Status Bar & Dynamic Island (Shown on Desktop in Phone Ratio) -->
-    <div class="phone-status-bar" id="phoneStatusBar">
-      <div class="status-time" id="phoneMockTime">22:00</div>
-      <div class="dynamic-island">
-        <span class="island-camera"></span>
-        <span class="island-glow">🪔</span>
+  <!-- Audio Controls Floating Button -->
+  <div class="audio-control-bar">
+    <button id="musicToggleBtn" class="audio-btn muted" aria-label="Toggle festive music">
+      <span class="audio-icon" id="audioIcon">🔇</span>
+      <span class="audio-text" id="audioText">Music OFF</span>
+      <div class="sound-wave">
+        <span></span><span></span><span></span><span></span>
       </div>
-      <div class="status-icons">
-        <span class="signal-icon">5G</span>
-        <span class="wifi-icon">📶</span>
-        <span class="battery-icon">🔋</span>
-      </div>
-    </div>
+    </button>
+  </div>
 
-    <!-- Audio Controls Floating Bar (Sticky at top of Phone Screen) -->
-    <div class="audio-control-bar">
-      <button id="musicToggleBtn" class="audio-btn muted" aria-label="Toggle festive music">
-        <span class="audio-icon" id="audioIcon">🔇</span>
-        <span class="audio-text" id="audioText">Music OFF</span>
-        <div class="sound-wave">
-          <span></span><span></span><span></span><span></span>
-        </div>
+  <!-- Surprise Tap-To-Open Overlay (Envelope / Gift Box) -->
+  <div id="surpriseOverlay" class="surprise-overlay">
+    <div class="surprise-card">
+      <div class="surprise-sparkles">✨ 🪔 💖 🪔 ✨</div>
+      <div class="surprise-tag" id="surpriseTag">A Special Surprise for My Favorite Madam 🎁</div>
+      
+      <div class="gift-box-wrapper" id="giftBoxTrigger">
+        <div class="pulsing-halo"></div>
+        <div class="diya-gift-icon">🪔</div>
+        <div class="click-ripple"></div>
+      </div>
+
+      <h2 class="surprise-heading" id="surpriseHeading">A Warm Festive Surprise ✨</h2>
+      <p class="surprise-subtext" id="surpriseSubtext">
+        Diwali ke is pyare festive season me, ek special festive greeting specially aapke liye...<br>
+        <span style="color: #ffd700; font-size: 0.95em; display: inline-block; margin-top: 6px;">Tap to open your Diwali greeting! ✨🪔</span>
+      </p>
+      
+      <button id="openSurpriseBtn" class="open-surprise-btn">
+        <span class="btn-icon">🎁</span>
+        <span class="btn-text">Tap Here to Open, My Favorite Madam! ✨</span>
       </button>
+      
+      <div class="tap-hint">👆 Tap on the Diya or button to celebrate with music 🎶</div>
     </div>
+  </div>
 
-    <!-- Surprise Tap-To-Open Overlay (Envelope / Gift Box) -->
-    <div id="surpriseOverlay" class="surprise-overlay">
-      <div class="surprise-card">
-        <div class="surprise-sparkles">✨ 🪔 💖 🪔 ✨</div>
-        <div class="surprise-tag" id="surpriseTag">A Special Surprise for My Favorite Madam 🎁</div>
-        
-        <div class="gift-box-wrapper" id="giftBoxTrigger">
-          <div class="pulsing-halo"></div>
-          <div class="diya-gift-icon">🪔</div>
-          <div class="click-ripple"></div>
-        </div>
-
-        <h2 class="surprise-heading" id="surpriseHeading">A Warm Festive Surprise ✨</h2>
-        <p class="surprise-subtext" id="surpriseSubtext">
-          Diwali ke is pyare festive season me, ek special festive greeting specially aapke liye...<br>
-          <span style="color: #ffd700; font-size: 0.95em; display: inline-block; margin-top: 6px;">Tap to open your Diwali greeting! ✨🪔</span>
-        </p>
-        
-        <button id="openSurpriseBtn" class="open-surprise-btn">
-          <span class="btn-icon">🎁</span>
-          <span class="btn-text">Tap Here to Open, My Favorite Madam! ✨</span>
-        </button>
-        
-        <div class="tap-hint">👆 Tap on the Diya or button to celebrate with music 🎶</div>
-      </div>
-    </div>
+  <!-- Main Festive Page Container -->
+  <div class="page-container" id="pageContainer">
 
     <!-- Decorative Top Toran & Hanging Kandils -->
     <header class="festive-decorations">
@@ -251,7 +237,7 @@
       </div>
     </main>
 
-  </div> <!-- /phone-viewport-container -->
+  </div> <!-- /page-container -->
 
   <!-- Background Festive Song Audio Player -->
   <audio id="festiveAudio" loop preload="auto">

@@ -458,19 +458,7 @@ function openSurprise() {
 // ============================================================
 // 8. INITIALIZATION & EVENT LISTENERS
 // ============================================================
-function updatePhoneMockTime() {
-  const timeElem = document.getElementById('phoneMockTime');
-  if (!timeElem) return;
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  timeElem.textContent = `${hours}:${minutes}`;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  updatePhoneMockTime();
-  setInterval(updatePhoneMockTime, 30000);
-
   const customRecipient = getRecipientNameFromURL();
   if (customRecipient) {
     updateRecipientNameUI(customRecipient);
